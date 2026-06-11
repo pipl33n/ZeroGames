@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: ms-juegos
+          uri: ${MS_JUEGOS_URL:http://localhost:8081}
+          predicates:
+            - Path=/juegos/**
+          filters:
+            - RewritePath=/juegos/(?<segment>.*), /${segment}
+
+        - id: ms-usuarios
+          uri: ${MS_USUARIOS_URL:http://localhost:8082}
+          predicates:
+            - Path=/usuarios/**
+          filters:
+            - RewritePath=/usuarios/(?<segment>.*), /${segment}
+
+        - id: ms-pedidos
+          uri: ${MS_PEDIDOS_URL:http://localhost:8083}
+          predicates:
+            - Path=/pedidos/**
+          filters:
+            - RewritePath=/pedidos/(?<segment>.*), /${segment}
+
+server:
+  port: ${PORT:8080}
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
