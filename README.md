@@ -20,13 +20,13 @@ Plataforma de venta de videojuegos online construida con arquitectura de microse
 | `ms-usuarios` | 8082 | Gestión de usuarios registrados |
 | `ms-pedidos` | 8083 | Gestión de pedidos, consume ms-juegos y ms-usuarios |
 | `api-gateway` | 8080 | Enrutamiento centralizado hacia los microservicios |
-| `ms-favoritos` | — | (estructura base) |
-| `ms-reseñas` | — | (estructura base) |
-| `ms-pagos` | — | (estructura base) |
-| `ms-biblioteca` | — | (estructura base) |
-| `ms-carrito` | — | (estructura base) |
-| `ms-notificaciones` | — | (estructura base) |
-| `ms-inventario` | — | (estructura base) |
+| `ms-favoritos` | — | Gestión de Juegos favoritos|
+| `ms-reseñas` | — | Gestion de Reseñas de juegos |
+| `ms-pagos` | — | Gestion de Pagos |
+| `ms-biblioteca` | — | Gestion de biblioteca |
+| `ms-carrito` | — | Gestion de Carrito|
+| `ms-notificaciones` | — | Gestion de notificaciones |
+| `ms-inventario` | — | Gestion de inventario |
 
 
 ---
