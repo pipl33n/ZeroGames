@@ -6,9 +6,9 @@ Plataforma de venta de videojuegos online construida con arquitectura de microse
 
 | Nombre | GitHub |
 |---|---|
-| Josefa Roca |  |
+| Josefa Roca | @jocfapaz |
 | Luis San Martin | @pipl33n |
-| *(completar tercer integrante)* | — |
+| Renato Quevedo | @Tatora09 |
 
 ---
 
