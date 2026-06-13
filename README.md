@@ -50,8 +50,9 @@ Plataforma de venta de videojuegos online construida con arquitectura de microse
 | ms-pedidos | http://localhost:8083/swagger-ui/index.html |
 
 > ## Despliegue remoto (Railway)
-> |---|---|
-> |ms-juegos|https://zerogames-production-c49d.up.railway.app/swagger-ui/swagger-ui/index.html|
+| Microservicio | URL railwail |
+|---|---|
+| ms-juegos | http://localhost:8081/swagger-ui/index.html |
 
 ---
 
