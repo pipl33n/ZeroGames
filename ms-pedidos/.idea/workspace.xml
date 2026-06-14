@@ -67,6 +67,28 @@
       <recent name="C:\Users\Servicios Digitales\Desktop\proyecto\ZeroGames\ms-pedidos\src\main\resources" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="PedidoServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ms-pedidos" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.Pedidos.mspedidos.Service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.Pedidos.mspedidos.Service" />
+      <option name="MAIN_CLASS_NAME" value="com.Pedidos.mspedidos.Service.PedidoServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.PedidoServiceTest" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="2d1fb64d-4ae9-4aad-a40b-3caae5fc5843" name="Changes" comment="" />
