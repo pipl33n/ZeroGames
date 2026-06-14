@@ -20,14 +20,13 @@ Plataforma de venta de videojuegos online construida con arquitectura de microse
 | `ms-usuarios` | 8082 | Gestión de usuarios registrados |
 | `ms-pedidos` | 8083 | Gestión de pedidos, consume ms-juegos y ms-usuarios |
 | `api-gateway` | 8080 | Enrutamiento centralizado hacia los microservicios |
-| `ms-favoritos` | — | Gestión de Juegos favoritos|
-| `ms-reseñas` | — | Gestion de Reseñas de juegos |
-| `ms-pagos` | — | Gestion de Pagos |
-| `ms-biblioteca` | — | Gestion de biblioteca |
-| `ms-carrito` | — | Gestion de Carrito|
-| `ms-notificaciones` | — | Gestion de notificaciones |
-| `ms-inventario` | — | Gestion de inventario |
-
+| `ms-favoritos` | 8084 | Gestión de juegos favoritos por usuario |
+| `ms-reseñas` | 8085 | Gestión de reseñas de juegos |
+| `ms-pagos` | 8086 | Gestión de pagos |
+| `ms-biblioteca` | 8087 | Gestión de biblioteca personal |
+| `ms-carrito` | 8088 | Gestión de carrito de compras |
+| `ms-notificaciones` | 8089 | Gestión de notificaciones |
+| `ms-inventario` | 8090 | Gestión de inventario |
 
 ---
 
@@ -35,24 +34,19 @@ Plataforma de venta de videojuegos online construida con arquitectura de microse
 
 | Ruta Gateway | Microservicio destino | Ejemplo de uso |
 |---|---|---|
-| `GET /juegos/**` | ms-juegos (`:8081`) | `GET http://localhost:8080/juegos/api/juegos` |
-| `GET /usuarios/**` | ms-usuarios (`:8082`) | `GET http://localhost:8080/usuarios/api/usuarios` |
-| `GET /pedidos/**` | ms-pedidos (`:8083`) | `GET http://localhost:8080/pedidos/api/pedidos` |
+| `/juegos/**` | ms-juegos (`:8081`) | `GET http://localhost:8080/juegos/api/juegos` |
+| `/usuarios/**` | ms-usuarios (`:8082`) | `GET http://localhost:8080/usuarios/api/usuarios` |
+| `/pedidos/**` | ms-pedidos (`:8083`) | `GET http://localhost:8080/pedidos/api/pedidos` |
 
 ---
 
 ## Documentación Swagger / OpenAPI
 
-| Microservicio | URL local |
-|---|---|
-| ms-juegos | http://localhost:8081/swagger-ui/index.html |
-| ms-usuarios | http://localhost:8082/swagger-ui/index.html |
-| ms-pedidos | http://localhost:8083/swagger-ui/index.html |
-
-> ## Despliegue remoto (Railway)
-| Microservicio | URL railway |
-|---|---|
-| ms-juegos | https://zerogames-production-c49d.up.railway.app/swagger-ui/swagger-ui/index.html|
+| Microservicio | URL local | URL Railway |
+|---|---|---|
+| ms-juegos | http://localhost:8081/swagger-ui/index.html | https://zerogames-production-c49d.up.railway.app/swagger-ui/index.html |
+| ms-usuarios | http://localhost:8082/swagger-ui/index.html | — |
+| ms-pedidos | http://localhost:8083/swagger-ui/index.html | — |
 
 ---
 
@@ -76,25 +70,60 @@ CREATE DATABASE db_pedidos;
 
 ```bash
 # ms-juegos (puerto 8081)
-
-
+cd ms-juegos
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
 # ms-usuarios (puerto 8082)
-
+cd ms-usuarios
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
 # ms-pedidos (puerto 8083)
-
+cd ms-pedidos
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
 # api-gateway (puerto 8080)
-
+cd api-gateway
+mvn spring-boot:run
 ```
 
-### 3. Verificar funcionamiento
+### 3. Ejecutar pruebas unitarias
 
 ```bash
-# Listar juegos a través del Gateway
-http://localhost:8080/juegos/api/juegos
+# ms-juegos
+cd ms-juegos
+mvn test
 
-# Listar usuarios a través del Gateway
-http://localhost:8080/usuarios/api/usuarios
+# ms-usuarios
+cd ms-usuarios
+mvn test
+
+# ms-pedidos
+cd ms-pedidos
+mvn test
 ```
+
+### 4. Verificar funcionamiento vía Gateway
+
+```bash
+# Listar juegos
+GET http://localhost:8080/juegos/api/juegos
+
+# Listar usuarios
+GET http://localhost:8080/usuarios/api/usuarios
+
+# Listar pedidos
+GET http://localhost:8080/pedidos/api/pedidos
+```
+
+---
+
+## Instrucciones de ejecución remota (Railway)
+
+El microservicio `ms-juegos` está desplegado en Railway y accesible en:
+
+- **Swagger:** https://zerogames-production-c49d.up.railway.app/swagger-ui/index.html
+- **API:** https://zerogames-production-c49d.up.railway.app/api/juegos
+
+Las variables de entorno configuradas en Railway son:
+- `SPRING_PROFILES_ACTIVE=railway`
+- `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` (configuradas en el panel de Railway)
