@@ -1,33 +1,12 @@
-package main.java.msinventario.Repository;
+package com.Pagos.mspagos.Repository; // Ajusta el package según tu proyecto
 
-import java.util.ArrayList;
-import java.util.List;
+import com.Pagos.mspagos.Model.Pagos;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
+@Repository
+public interface PagosRepository extends JpaRepository<Pagos, Integer> {
+    // JpaRepository ya te regala los métodos: findAll(), findById(), save(), deleteById()
 
-public class InventarioRepository {
-    private List<Inventario> inventarios = new ArrayList<>();
-
-    public List<Inventario> findAll() {
-        return inventarios;
-    }
-
-    public Inventario findById(int id) {
-        return inventarios.stream()
-                .filter(inv -> inv.getId() == id)
-                .findFirst()
-                .orElse(null);
-    }
-
-    public void save(Inventario inventario) {
-        inventarios.add(inventario);
-    }
-
-    public void deleteById(int id) {
-        inventarios.removeIf(inv -> inv.getId() == id);
-    }
-
-    public void update(Inventario inventario) {
-        deleteById(inventario.getId());
-        save(inventario);
-    }
+    // Si en el futuro necesitas buscar pagos por un cliente o estado, los agregarías aquí.
 }

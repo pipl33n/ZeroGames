@@ -1,32 +1,12 @@
-package pagos;
+package com.Pagos.mspagos.Repository; // Ajusta el package según tu proyecto
 
-import java.util.ArrayList;
-import java.util.List;
+import com.Pagos.mspagos.Model.Pagos;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class PagosRepository {
-    private List<Pagos> pagos = new ArrayList<>();
+@Repository
+public interface PagosRepository extends JpaRepository<Pagos, Integer> {
+    // JpaRepository ya te regala los métodos: findAll(), findById(), save(), deleteById()
 
-    public List<Pagos> findAll() {
-        return pagos;
-    }
-
-    public Pagos findById(int id) {
-        return pagos.stream()
-                .filter(p -> p.getId() == id)
-                .findFirst()
-                .orElse(null);
-    }
-
-    public void save(Pagos pago) {
-        pagos.add(pago);
-    }
-
-    public void deleteById(int id) {
-        pagos.removeIf(p -> p.getId() == id);
-    }
-
-    public void update(Pagos pago) {
-        deleteById(pago.getId());
-        save(pago);
-    }
+    // Si en el futuro necesitas buscar pagos por un cliente o estado, los agregarías aquí.
 }
