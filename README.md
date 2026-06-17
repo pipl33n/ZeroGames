@@ -8,7 +8,7 @@ Plataforma de venta de videojuegos online construida con arquitectura de microse
 |---|---|
 | Josefa Roca | @jocfapaz |
 | Luis San Martin | @pipl33n |
-| Renato Quevedo | @Elmen899|
+| Renato Quevedo | @Tatora09|
 
 ---
 
